@@ -5,7 +5,6 @@
     <record model="ir.ui.view" id="plm_convert_stack_search">
         <field name="name">plm.convert.stack.search</field>
         <field name="model">plm.convert.stack</field>
-        <field name="type">search</field>
         <field name="priority" eval="1"/>
         <field name="arch" type="xml">
             <search string="Plm Convert Stack">
@@ -37,7 +36,6 @@
     <record model="ir.ui.view" id="plm_convert_stack_form">
         <field name="name">plm.convert.stack.form</field>
         <field name="model">plm.convert.stack</field>
-        <field name="type">form</field>
         <field name="arch" type="xml">
             <form string="Plm Convert Stack">
             	<sheet>	
@@ -76,13 +74,12 @@
         </field>
     </record>
 
-    <record model="ir.ui.view" id="plm_convert_stack_tree">
-        <field name="name">plm.convert.stack.tree</field>
+    <record model="ir.ui.view" id="plm_convert_stack_list">
+        <field name="name">plm.convert.stack.list</field>
         <field name="model">plm.convert.stack</field>
-        <field name="type">tree</field>
         <field name="priority" eval="1"/>
         <field name="arch" type="xml">
-            <tree string="Plm Convert Stack">
+            <list string="Plm Convert Stack">
                 <field name="sequence" widget="handle"/>
                 <field name="operation_type"/>
                 <field name="convrsion_rule"/>
@@ -98,7 +95,7 @@
                         icon="fa-arrow-circle-right"></button>
                 <field name="error_string"/>
                 <field name="write_date"/>
-            </tree>
+            </list>
         </field>
     </record>
 
@@ -106,7 +103,7 @@
         <field name="name">Plm Convert Stack</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">plm.convert.stack</field>
-        <field name="view_id" ref="plm_convert_stack_tree"/>
+        <field name="view_id" ref="plm_convert_stack_list"/>
         <field name="search_view_id" ref="plm_convert_stack_search"/>
     </record>
 

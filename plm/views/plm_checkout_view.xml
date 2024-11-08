@@ -101,28 +101,27 @@
 	            </field>
 	</record>
 
-    <record model="ir.ui.view" id="plm_checkout_tree">
+    <record model="ir.ui.view" id="plm_checkout_list">
         <field name="name">plm.checkout</field>
         <field name="model">plm.checkout</field>
-        <field name="type">tree</field>
         <field name="priority" eval="1"/>
         <field name="arch" type="xml">
-            <tree string="Documents in Check-Out">
+            <list string="Documents in Check-Out">
                 <field name="userid" select="1"/>
                 <field name="hostname" select="1"/>
                 <field name="hostpws" select="1"/>
                 <field name="documentid" select="1"/>
                 <field name="rel_doc_rev"/>
                 <field name="create_date" select="1"/>
-            </tree>
+            </list>
         </field>
     </record>
 
     <record model="ir.actions.act_window" id="action_plm_checkout">
         <field name="name">Check-Out</field>
         <field name="res_model">plm.checkout</field>
-        <field name="view_mode">tree,form</field>
-        <field name="view_id" ref="plm_checkout_tree"/>
+        <field name="view_mode">list,form</field>
+        <field name="view_id" ref="plm_checkout_list"/>
         <field name="search_view_id" ref="plm_checkout_search"/>
     </record>
 

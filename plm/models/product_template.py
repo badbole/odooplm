@@ -149,7 +149,7 @@ class ProductTemplate(models.Model):
         return {'name': _('Products'),
                 'res_model': 'product.template',
                 'view_type': 'form',
-                'view_mode': 'tree,form',
+                'view_mode': 'list,form',
                 'type': 'ir.actions.act_window',
                 'domain': [('id', 'in', self.get_all_revision().ids)],
                 'context': {}}

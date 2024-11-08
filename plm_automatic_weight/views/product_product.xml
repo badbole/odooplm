@@ -4,7 +4,6 @@
         <field name="name">plm.base.component.extended.weight</field>
         <field name="model">product.product</field>
         <field name="inherit_id" ref="plm.plm_component_base_form"/>
-        <field name="type">form</field>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='weight']" position="replace">
                 <field name="weight" invisible="1"/>
@@ -28,7 +27,6 @@
         <field name="name">plm.product.product.normal.form.view.inherit.extended.weight</field>
         <field name="model">product.product</field>
         <field name="inherit_id" ref="plm.plm_product_product_normal_form_view_inherit"/>
-        <field name="type">form</field>
         <field name="arch" type="xml">
             <xpath expr="//group[@name='technical_infos_group']" position="after">
                 <group name="weight" string="Weight" colspan="4" col="4">

@@ -33,14 +33,14 @@ class report_ir_attachment_file(models.Model):
     _description = "Files details by Directory"
     _auto = False
 
-    file_size = fields.Integer(_('File Size'),
+    file_size = fields.Integer('File Size',
                                readonly=True)
-    nbr = fields.Integer(_('# of Files'),
+    nbr = fields.Integer('# of Files',
                          readonly=True)
-    month = fields.Char(_('Month'),
+    month = fields.Char('Month',
                         size=24,
                         readonly=True)
-    write_uid = fields.Integer(_('Write User'),
+    write_uid = fields.Integer('Write User',
                                readonly=True)
     _order = "month"
 

@@ -68,7 +68,6 @@
         <field name="name">plm.relation.normal</field>
         <field name="model">plm.temporary</field>
         <field name="inherit_id" ref="plm.plm_component_create_normal_bom"/>
-        <field name="type">form</field>
         <field name="arch" type="xml">
             <field name="summarize" position="after">
                 <field name="cutted_part_explosion" widget="radio"/>

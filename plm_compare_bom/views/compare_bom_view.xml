@@ -5,7 +5,6 @@
         <record model="ir.ui.view" id="view_plm_compare_bom">
             <field name="name">Compare BoMs</field>
             <field name="model">plm.compare.bom</field>
-            <field name="type">form</field>
             <field name="priority" eval="10"/>
             <field name="arch" type="xml">
                 <form string="Compare BoMs">
@@ -43,7 +42,6 @@
      <record model="ir.ui.view" id="plm_visualize_diff_form">
         <field name="name">plm.visualize.diff.form</field>
         <field name="model">plm.compare.bom</field>
-        <field name="type">form</field>
         <field name="priority" eval="15"/>
         <field name="arch" type="xml">
             <form string="Visualize BoM">
@@ -85,7 +83,7 @@
                 <group colspan="4" col="4">
                     <group col="2" colspan="2">
                	        <field colspan="2" name="anotinb" nolabel="1" readonly="True">
-               	            <tree  decoration-bf="reason != ''"
+               	            <list  decoration-bf="reason != ''"
                                    decoration-success="reason == 'added'"
                                    decoration-warning="reason == 'changed'"
                                    decoration-muted="reason == 'changed_qty'">
@@ -111,12 +109,12 @@
                                             string="Move Left"
                                             class="oe_stat_button"
                                             icon="fa-angle-double-right"/>                                        
-               	             </tree>
+               	             </list>
                	        </field>
                     </group>
                  	<group col="2" colspan="2">
                  		<field colspan="2" name="bnotina" nolabel="1" readonly="True">
-                 		     <tree decoration-bf="reason != ''"
+                 		     <list decoration-bf="reason != ''"
                                    decoration-success="reason == 'added'"
                                    decoration-warning="reason == 'changed'"
                                    decoration-muted="reason == 'changed_qty'">
@@ -142,7 +140,7 @@
                                             string="Delete Left"
                                             class="oe_stat_button"
                                             icon="fa-trash-o"/>
-                            </tree>  
+                            </list>  
                         </field>
              		</group>
          		</group>

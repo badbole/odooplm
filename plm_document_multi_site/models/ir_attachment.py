@@ -116,7 +116,7 @@ class IrAttachment(models.Model):
         return {'name': _('Sync.Actions'),
                 'res_model': 'plm.document.action.syncronize',
                 'view_type': 'form',
-                'view_mode': 'tree,form',
+                'view_mode': 'list,form',
                 'type': 'ir.actions.act_window',
                 'domain': [('id', 'in', self.plm_document_action_syncronize_ids.ids)],
                 'context': {}}

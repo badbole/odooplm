@@ -5,10 +5,10 @@
 
 
 
-        <record id="plm_bom_tree_view_obsoleted" model="ir.ui.view">
-            <field name="name">plm.mrp.bom.tree</field>
+        <record id="plm_bom_list_view_obsoleted" model="ir.ui.view">
+            <field name="name">plm.mrp.bom.list</field>
             <field name="model">mrp.bom</field>
-            <field name="inherit_id" ref="plm.plm_bom_tree_view"/>
+            <field name="inherit_id" ref="plm.plm_bom_list_view"/>
             <field name="arch" type="xml">
                  <field name="weight_net" position="after">
                    	<field name="obsolete_presents" invisible='True'/>
@@ -17,14 +17,14 @@
         	</field>
         </record>
 
-        <record model="ir.ui.view" id="plm_tree_bom_obsoleted">
-            <field name="name">plm.tree.bom.obsoleted</field>
+        <record model="ir.ui.view" id="plm_list_bom_obsoleted">
+            <field name="name">plm.list.bom.obsoleted</field>
             <field name="model">mrp.bom</field>
-            <field name="inherit_id" ref="plm.plm_bom_tree_view"/>
+            <field name="inherit_id" ref="plm.plm_bom_list_view"/>
             <field name="arch" type="xml">
-                <tree position="attributes">
+                <list position="attributes">
                     <attribute name="decoration-muted">obsolete_presents == True</attribute>
-                </tree>
+                </list>
             </field>
         </record>
 
@@ -33,7 +33,6 @@
             <field name="model">mrp.bom</field>
             <field name="inherit_id" ref="plm.plm_bom_form_view"/>
             <field name="priority" eval="19"/>
-            <field name="type">form</field>
             <field name="arch" type="xml">
             	<data>
             		<xpath expr="//button[@name='open_related_bom_lines']" position="before">
@@ -66,7 +65,6 @@
     <record id="plm_bom_date_compute" model="ir.ui.view">
         <field name="name">plm.date.compure</field>
         <field name="model">plm.temporary_date_compute</field>
-        <field name="type">form</field>
         <field name="arch" type="xml">
         <form string="Compute Bom">
             <div>Select computation type and proceed.</div>

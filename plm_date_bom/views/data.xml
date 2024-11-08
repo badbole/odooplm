@@ -11,8 +11,6 @@
 	        <field name="code">model.scheduler_update_obsolete_bom('update')</field>
 	        <field name="interval_number">1</field>
 	        <field name="interval_type">days</field>
-	        <field name="numbercall">-1</field>
-	        <field name="doall" eval="False"/>
 	    </record>
 
 		<record id="ir_cron_replace_obsolete_bom" model="ir.cron">
@@ -23,8 +21,6 @@
 	        <field name="code">model.scheduler_update_obsolete_bom('new_bom')</field>
 	        <field name="interval_number">1</field>
 	        <field name="interval_type">days</field>
-	        <field name="numbercall">-1</field>
-	        <field name="doall" eval="False"/>
 	    </record>
 
     </data>

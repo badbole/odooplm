@@ -5,7 +5,6 @@
     <record model="ir.ui.view" id="plm_convert_rule_search">
         <field name="name">plm.convert.rule.search</field>
         <field name="model">plm.convert.rule</field>
-        <field name="type">search</field>
         <field name="priority" eval="1"/>
         <field name="arch" type="xml">
             <search string="Plm Convert Rule">
@@ -23,7 +22,6 @@
     <record model="ir.ui.view" id="plm_convert_rule_form">
         <field name="name">plm.convert.rule.form</field>
         <field name="model">plm.convert.rule</field>
-        <field name="type">form</field>
         <field name="arch" type="xml">
             <form string="Plm Convert Rule">
             	<sheet>	
@@ -82,19 +80,18 @@
         </field>
     </record>
 
-    <record model="ir.ui.view" id="plm_convert_rule_tree">
-        <field name="name">plm.convert.rule.tree</field>
+    <record model="ir.ui.view" id="plm_convert_rule_list">
+        <field name="name">plm.convert.rule.list</field>
         <field name="model">plm.convert.rule</field>
-        <field name="type">tree</field>
         <field name="priority" eval="1"/>
         <field name="arch" type="xml">
-            <tree string="Plm Convert Rule">
+            <list string="Plm Convert Rule">
                 <field name="start_format"/>
                 <field name="end_format"/>
                 <field name="product_category"/>
                 <field name="output_name_rule"/>
                 <field name="server_id"/>
-            </tree>
+            </list>
         </field>
     </record>
 
@@ -102,7 +99,7 @@
         <field name="name">Plm Convert Rule</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">plm.convert.rule</field>
-        <field name="view_id" ref="plm_convert_rule_tree"/>
+        <field name="view_id" ref="plm_convert_rule_list"/>
         <field name="search_view_id" ref="plm_convert_rule_search"/>
     </record>
 

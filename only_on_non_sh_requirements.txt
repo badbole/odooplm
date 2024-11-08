@@ -1,0 +1,6 @@
+ezdxf
+matplotlib
+cadquery
+numpy-stl
+--pre cadquery
+base64io

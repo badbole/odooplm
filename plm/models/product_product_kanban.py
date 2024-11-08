@@ -109,7 +109,7 @@ class ProductProductKanban(models.Model):
     def open_normal_bom(self):
         boms = self.get_related_boms()
         domain = [('id', 'in', boms.ids), ('type', '=', 'normal')]
-        return self.common_open(_('Related Boms'), 'mrp.bom', 'tree,form', 'form', boms.ids, self.env.context, domain)
+        return self.common_open(_('Related Boms'), 'mrp.bom', 'list,form', 'form', boms.ids, self.env.context, domain)
 
     
     def open_new_component(self):
@@ -119,13 +119,13 @@ class ProductProductKanban(models.Model):
     def open_related_docs_action(self):
         docIds = self.get_related_docs()
         domain = [('id', 'in', docIds)]
-        return self.common_open(_('Related Documents'), 'ir.attachment', 'tree,form', 'form', docIds, self.env.context, domain)
+        return self.common_open(_('Related Documents'), 'ir.attachment', 'list,form', 'form', docIds, self.env.context, domain)
 
     
     def open_related_boms_action(self):
         boms = self.get_related_boms()
         domain = [('id', 'in', boms.ids)]
-        return self.common_open(_('Related Boms'), 'mrp.bom', 'tree,form', 'form', boms.ids, self.env.context, domain)
+        return self.common_open(_('Related Boms'), 'mrp.bom', 'list,form', 'form', boms.ids, self.env.context, domain)
 
     
     def create_normal_bom(self):

@@ -52,7 +52,7 @@ class PlmDocumentExtended(models.TransientModel):
                 logging.error('[new_document_revision_by_server] newID: %r' % (newID))
                 raise UserError(_('Something wrong happens during new document revision process.'))
             return {'name': _('Revised Document'),
-                    'view_type': 'tree,form',
+                    'view_type': 'list,form',
                     "view_mode": 'form',
                     'res_model': 'ir.attachment',
                     'res_id': newID,

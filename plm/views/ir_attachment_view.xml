@@ -3,7 +3,6 @@
      <record model="ir.ui.view" id="view_attachment_client_workflow">
         <field name="name">view.attachment.client.workflow</field>
         <field name="model">ir.attachment</field>
-        <field name="type">form</field>
         <field name="priority" eval="20"/>
         <field name="arch" type="xml">
             <form string="Attachments">
@@ -37,11 +36,11 @@
      <record model="ir.ui.view" id="view_attachment_form_plm_hinerit">
         <field name="name">ir.attachment</field>
         <field name="model">ir.attachment</field>
-        <field name="type">form</field>
         <field name="priority" eval="20"/>
         <field name="arch" type="xml">
             <form string="Attachments">
                 <header>
+                
                     <button name="action_release"
                             string="Release Document"
                             class="oe_highlight"
@@ -76,49 +75,48 @@
                            readonly="1"/>
                 </header>
                	<sheet>
-               	    
-	                <div class="oe_button_box" name="button_box">
-						<button class="oe_stat_button" icon="fa-sitemap" type="object" name="action_view_rel_doc">
-							<field name="document_rel_count" string="Documents" widget="statinfo"/>
-						</button>
-						<field name="is_checkout" invisible="True"/>
-						<button name="toggle_check_out"
-						        class="oe_stat_button"
-						        icon="fa-lock" 
-						        type="object"
-						        invisible="is_checkout==True">
-						        <div class="o_field_widget o_stat_info o_readonly_modifier">
-						           <span>Check-Out</span>
-						        </div>                        
-						</button>
-						<button name="toggle_check_out"
-						        class="oe_stat_button"
-						        icon="fa-unlock"
-						        invisible="is_checkout==False"
-						        type="object">
-						        <div class="o_field_widget o_stat_info o_readonly_modifier">
-						           <span>Check-In</span>
-						        </div>
-						</button>
-						<button name="print_Document_Doc_Structure"
-								string="Doc Structure"
-								type="object"
-								class="oe_stat_button" 
-								icon="fa-bars"/>
-						<button name="open_related_document_revisions"
-						        type="object"
-						        string="N.Rev."
-						        class="oe_stat_button"
-						        icon="fa-tasks"
-						        invisible="engineering_revision_count &lt;=1">
-						        <field name="engineering_revision_count" string=" " widget="statinfo"/>
-						</button>
-						<button name="check_out_user"
-						        icon="fa-user"
-						        invisible="checkout_user==False or checkout_user==''">
-							<field name="checkout_user"/>
-						</button>
-						<field name="must_update_from_cad" invisible="1"></field>
+               	    <div class="oe_button_box" name="button_box">
+                        <button class="oe_stat_button" icon="fa-sitemap" type="object" name="action_view_rel_doc">
+                            <field name="document_rel_count" string="Documents" widget="statinfo"/>
+                        </button>
+                        <field name="is_checkout" invisible="True"/>
+                        <button name="toggle_check_out"
+                                class="oe_stat_button"
+                                icon="fa-lock" 
+                                type="object"
+                                invisible="is_checkout==True">
+                                <div class="o_field_widget o_stat_info o_readonly_modifier">
+                                   <span>Check-Out</span>
+                                </div>                        
+                        </button>
+                        <button name="toggle_check_out"
+                                class="oe_stat_button"
+                                icon="fa-unlock"
+                                invisible="is_checkout==False"
+                                type="object">
+                                <div class="o_field_widget o_stat_info o_readonly_modifier">
+                                   <span>Check-In</span>
+                                </div>
+                        </button>
+                        <button name="print_Document_Doc_Structure"
+                                string="Doc Structure"
+                                type="object"
+                                class="oe_stat_button" 
+                                icon="fa-bars"/>
+                        <button name="open_related_document_revisions"
+                                type="object"
+                                string="N.Rev."
+                                class="oe_stat_button"
+                                icon="fa-tasks"
+                                invisible="engineering_revision_count &lt;=1">
+                                <field name="engineering_revision_count" string=" " widget="statinfo"/>
+                        </button>
+                        <button name="check_out_user"
+                                icon="fa-user"
+                                invisible="checkout_user==False or checkout_user==''">
+                            <field name="checkout_user"/>
+                        </button>
+                        <field name="must_update_from_cad" invisible="1"></field>
                         <button name="related_not_update" 
                                 icon="fa-warning"
                                 type="object"
@@ -127,35 +125,35 @@
                                  <span style="color:orange">Not.Update</span>
                               </div>
                         </button>
-		                <field name="has_error" invisible="True"/>
-		                <button name="open_related_dbthread"
-		                        type="object"
-		                        string="S.ERR"
-		                        class="oe_stat_button"
-		                        icon="fa-bug"
-		                        invisible="has_error==False">
-		                </button>
-	           		</div>
-		           	<group>
-	                	<group string= "PLM Infos:" name="main_doc_info">
-	                    	<field string="Eng. Document Name"
-	                    	       name="engineering_code"
-	                    	       readonly="id>0"/>
-	                    	<field string="Enineering revision" name="engineering_revision" readonly="True"/>
-	                    	<field string="Is a Plm Document" name="is_plm" visible="0" widget="boolean_toggle" readonly="True"/>
-	                	</group>
-	                 	<group name="doc_preview">
-	                    	<field name="preview"
-	                    	       widget="image"
-	                    	       options="{'zoom': true, 'zoom_delay': 800}"
-	                    	       nolabel="1"
-	                    	       readonly="is_plm==True"/>
-	                	</group>
-	               	</group>
+                        <field name="has_error" invisible="True"/>
+                        <button name="open_related_dbthread"
+                                type="object"
+                                string="S.ERR"
+                                class="oe_stat_button"
+                                icon="fa-bug"
+                                invisible="has_error==False">
+                        </button>
+                   </div>
+                    <group>
+                        <group string= "PLM Infos:" name="main_doc_info">
+                            <field string="Eng. Document Name"
+                                   name="engineering_code"
+                                   readonly="id>0"/>
+                            <field string="Enineering revision" name="engineering_revision" readonly="True"/>
+                            <field string="Is a Plm Document" name="is_plm" visible="0" widget="boolean_toggle" readonly="True"/>
+                        </group>
+                        <group name="doc_preview">
+                            <field name="preview"
+                                   widget="image"
+                                   options="{'zoom': true, 'zoom_delay': 800}"
+                                   nolabel="1"
+                                   readonly="is_plm==True"/>
+                        </group>
+                    </group>
                     <notebook>
-                    	<page string="Attachment">
-                        	<group string="File Data:" name="FileData">
-                            	<group invisible="type=='url'" name="group_datas" colspan="4" col="2">
+                        <page string="Attachment">
+                            <group string="File Data:" name="FileData">
+                                <group invisible="type=='url'" name="group_datas" colspan="4" col="2">
                                     <field name="datas"
                                            filename="name"
                                            readonly="engineering_state in ['released','obsoleted']"/>
@@ -178,44 +176,44 @@
                             </group>
                             <group name="related">
                                 <group string="Related To">
-                                	<field name="res_id" readonly="True" colspan="1"/>
+                                    <field name="res_id" readonly="True" colspan="1"/>
                                 </group>
                                 <group string="Attachments To">
-                                	<field name="res_name" readonly="1" colspan="1"/>
-                                	<field name="res_model" readonly="True" colspan="1"/>
+                                    <field name="res_name" readonly="1" colspan="1"/>
+                                    <field name="res_model" readonly="True" colspan="1"/>
                                 </group>
-                        	</group>
+                            </group>
                         </page>
                         <page string="History" name="workflow_section">
-                        	<group string="Changes">
-                        		<group>
-                        			<label for="create_uid" string="Creation"/>
-	                        		<div name="create_uid_div">
-	                        			<field name="create_uid" readonly="1" class="oe_inline"/> on <field name="create_date" readonly="1" class="oe_inline"/>
-	                     			</div>
-	                   				<label for="write_uid"/>
-	                        		<div name="write_uid_div">
-	                        			<field name="write_uid" readonly="1" class="oe_inline"/> on <field name="write_date" readonly="1" class="oe_inline"/>
-	                        		</div>	
-                        		</group>
-                        		<group>
-	                            	<label for="engineering_workflow_user"/>
-	                            	<div name="workflow_user_div">
-	                                	<field name="engineering_workflow_user" readonly="1" class="oe_inline"/> on <field name="engineering_workflow_date" readonly="1" class="oe_inline"/>
-	                            	</div>
-                        		</group>
-                        		<group string="User"
-                        		      invisible="engineering_release_user==False or engineering_revision_user==False">
-                        			<label for="engineering_release_user"/>
-	                            	<div name="attachment_release_user_div">
-	                                	<field name="engineering_release_user" readonly="1" class="oe_inline"/> on <field name="engineering_release_date" readonly="1" class="oe_inline"/>
-	                            	</div>
-                        			<label for="engineering_revision_user"/>
-	                            	<div name="engineering_revision_user">
-	                                	<field name="engineering_revision_user" readonly="1" class="oe_inline"/> on <field name="engineering_revision_date" readonly="1" class="oe_inline"/>
-	                            	</div>
-                        		</group>
-                        	</group>
+                            <group string="Changes">
+                                <group>
+                                    <label for="create_uid" string="Creation"/>
+                                    <div name="create_uid_div">
+                                        <field name="create_uid" readonly="1" class="oe_inline"/> on <field name="create_date" readonly="1" class="oe_inline"/>
+                                    </div>
+                                    <label for="write_uid"/>
+                                    <div name="write_uid_div">
+                                        <field name="write_uid" readonly="1" class="oe_inline"/> on <field name="write_date" readonly="1" class="oe_inline"/>
+                                    </div>  
+                                </group>
+                                <group>
+                                    <label for="engineering_workflow_user"/>
+                                    <div name="workflow_user_div">
+                                        <field name="engineering_workflow_user" readonly="1" class="oe_inline"/> on <field name="engineering_workflow_date" readonly="1" class="oe_inline"/>
+                                    </div>
+                                </group>
+                                <group string="User"
+                                      invisible="engineering_release_user==False or engineering_revision_user==False">
+                                    <label for="engineering_release_user"/>
+                                    <div name="attachment_release_user_div">
+                                        <field name="engineering_release_user" readonly="1" class="oe_inline"/> on <field name="engineering_release_date" readonly="1" class="oe_inline"/>
+                                    </div>
+                                    <label for="engineering_revision_user"/>
+                                    <div name="engineering_revision_user">
+                                        <field name="engineering_revision_user" readonly="1" class="oe_inline"/> on <field name="engineering_revision_date" readonly="1" class="oe_inline"/>
+                                    </div>
+                                </group>
+                            </group>
                         </page>
                         <page string="Linked Parts" name="page_liked_parts">
                             <field colspan="4"
@@ -244,22 +242,17 @@
                         </page>
                     </notebook>
                </sheet>
-          		<div class="oe_chatter">
-                	<field name="message_follower_ids" widget="mail_followers" modifiers="{}"/>
-                	<field name="message_ids" widget="mail_thread" modifiers="{}"/>
-                	<field name="activity_ids"/>
-          		</div>
+                <chatter/>
             </form>
     	</field>
     </record>
  
-    <record model="ir.ui.view" id="ir_attachment_tree">
+    <record model="ir.ui.view" id="ir_attachment_list">
         <field name="name">ir.attachment</field>
         <field name="model">ir.attachment</field>
-        <field name="type">tree</field>
         <field name="priority" eval="20"/>
         <field name="arch" type="xml">
-            <tree string="Documents"
+            <list string="Documents"
                   decoration-info="engineering_state == 'confirmed'"
                   decoration-success="engineering_state == 'released'"
                   decoration-warning="engineering_state == 'undermodify'"
@@ -280,14 +273,13 @@
                 <field name="create_date" select="True"/>
                 <field name="write_uid" select="True"/>
                 <field name="write_date" select="True"/>
-            </tree>
+            </list>
         </field>
     </record>
 
     <record model="ir.ui.view" id="ir_attachment_search">
         <field name="name">ir.attachment</field>
         <field name="model">ir.attachment</field>
-        <field name="type">search</field>
         <field name="priority" eval="20"/>
         <field name="arch" type="xml">
             <search string="Documents">
@@ -567,7 +559,7 @@
     <record model="ir.actions.act_window" id="plm_action_document_form">
         <field name="name">Documents</field>
         <field name="res_model">ir.attachment</field>
-        <field name="view_mode">kanban,graph,tree,form</field>
+        <field name="view_mode">kanban,graph,list,form</field>
         <field name="search_view_id" ref="plm.ir_attachment_search"></field>
         <field name="context">{"odooPLM":True}</field>
         <field name="domain">[('is_plm', '=', True)]</field>
@@ -575,7 +567,7 @@
                eval="[(5, 0, 0),
                       (0, 0, {'view_mode': 'kanban', 'view_id': ref('plm.document_kanban_view')}),
                       (0, 0, {'view_mode': 'form', 'view_id': ref('plm.view_attachment_form_plm_hinerit')}),
-                      (0, 0, {'view_mode': 'tree', 'view_id': ref('plm.ir_attachment_tree')})
+                      (0, 0, {'view_mode': 'list', 'view_id': ref('plm.ir_attachment_list')})
                       ]"/>
     </record>
 </odoo>

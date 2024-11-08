@@ -410,7 +410,7 @@ class ProductProduct(models.Model):
             return {'type': 'ir.actions.act_window',
                     'name': _('Mrp Bom'),
                     'view_type': 'form',
-                    'view_mode': 'tree,form',
+                    'view_mode': 'list,form',
                     'res_model': 'mrp.bom',
                     'context': localCtx,
                     }
@@ -1223,7 +1223,7 @@ Please try to contact OmniaSolutions to solve this error, or install Plm Sale Fi
         return {'domain': [('id', 'in', docIds)],
                 'name': _('Related documents'),
                 'view_type': 'form',
-                'view_mode': 'tree,form',
+                'view_mode': 'list,form',
                 'res_model': 'ir.attachment',
                 'type': 'ir.actions.act_window',
                 }
@@ -1740,7 +1740,7 @@ Please try to contact OmniaSolutions to solve this error, or install Plm Sale Fi
         return {'name': _('Products'),
                 'res_model': 'product.product',
                 'view_type': 'form',
-                'view_mode': 'tree,form',
+                'view_mode': 'list,form',
                 'type': 'ir.actions.act_window',
                 'domain': [('id', 'in', product_product_ids.ids)],
                 'context': {}}
@@ -1749,7 +1749,7 @@ Please try to contact OmniaSolutions to solve this error, or install Plm Sale Fi
         return {'name': _('Products'),
                 'res_model': 'product.template',
                 'view_type': 'form',
-                'view_mode': 'tree,form',
+                'view_mode': 'list,form',
                 'type': 'ir.actions.act_window',
                 'domain': [('id', '=', self.product_tmpl_id.id)],
                 'context': {}}

@@ -52,7 +52,7 @@ class MrpProduction(models.Model):
         return {'name': _('Products'),
                 'res_model': 'plm.breakages',
                 'view_type': 'form',
-                'view_mode': 'tree,form,pivot',
+                'view_mode': 'list,form,pivot',
                 'type': 'ir.actions.act_window',
                 'domain': [('product_id', '=', product_product_ids.ids)],
                 }

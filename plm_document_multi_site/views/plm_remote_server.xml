@@ -2,18 +2,17 @@
 <odoo>
 <data>
 
-    <record model="ir.ui.view" id="plm_remote_server_tree">
-        <field name="name">plm.remote.server.tree</field>
+    <record model="ir.ui.view" id="plm_remote_server_list">
+        <field name="name">plm.remote.server.list</field>
         <field name="model">plm.remote.server</field>
-        <field name="type">tree</field>
         <field name="priority" eval="1"/>
         <field name="arch" type="xml">
-            <tree string="Servers"  editable="top" >
+            <list string="Servers"  editable="top" >
                 <field name="name"/>
                 <field name="login"/>
                 <field name="address"/>
                 <field name="password" widget="password_meter"/>
-            </tree>
+            </list>
         </field>
     </record>
     
@@ -21,8 +20,8 @@
         <field name="name">Remote Server</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">plm.remote.server</field>
-        <field name="view_mode">tree,form</field>
-        <field name="view_id" ref="plm_remote_server_tree"/>
+        <field name="view_mode">list,form</field>
+        <field name="view_id" ref="plm_remote_server_list"/>
     </record>
     
     <menuitem

@@ -4,7 +4,6 @@
     <record model="ir.ui.view" id="view_plm_treatment">
         <field name="name">plm.treatment.view</field>
         <field name="model">plm.treatment</field>
-        <field name="type">form</field>
         <field name="arch" type="xml">
             <form string="Treatment">
             	<sheet>
@@ -18,17 +17,16 @@
         </field>
     </record>
     
-    <record model="ir.ui.view" id="plm_view_treatment_tree">
-        <field name="name">plm.view.treatment.tree</field>
+    <record model="ir.ui.view" id="plm_view_treatment_list">
+        <field name="name">plm.view.treatment.list</field>
         <field name="model">plm.treatment</field>
-        <field name="type">tree</field>
         <field name="priority" eval="1"/>
         <field name="arch" type="xml">
-            <tree string="Finishings">
+            <list string="Finishings"  editable="bottom">
                    <field name="name"/>
                    <field name="description"/>
                    <field name="sequence"/>
-            </tree>
+            </list>
         </field>
     </record>
 
@@ -36,8 +34,8 @@
         <field name="name">Treatments</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">plm.treatment</field>
-        <field name="view_mode">tree,form</field>
-        <field name="view_id" ref="plm_view_treatment_tree"/>
+        <field name="view_mode">list,form</field>
+        <field name="view_id" ref="plm_view_treatment_list"/>
     </record>
     
     

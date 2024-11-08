@@ -2,11 +2,11 @@
 <odoo>
     <!-- View customization on MRP -->
 
-    <record id="plm_mrp_bom_line_summarize_tree" model="ir.ui.view">
-        <field name="name">plm.mrp.bom.line.summarize.tree</field>
+    <record id="plm_mrp_bom_line_summarize_list" model="ir.ui.view">
+        <field name="name">plm.mrp.bom.line.summarize.list</field>
         <field name="model">mrp.bom.line</field>
         <field name="arch" type="xml">
-            <tree>
+            <list>
                 <field name="product_tumbnail" widget="image" options="{ 'size': [60, 60]}"/>
                 <field name="product_id"/>
                 <button name="go_to_product"
@@ -20,7 +20,7 @@
                 <field name="product_uom_id"/>
                 <field name="product_tag_ids" widget="many2many_tags" options="{'color_field': 'color'}" />
                 <field name="source_id" optional="hide"/>
-            </tree>
+            </list>
         </field>
    </record>
         
@@ -55,7 +55,7 @@
                 <field name="product_tag_ids" widget="many2many_tags" options="{'color_field': 'color'}" />
                 <field name="source_id" string="Source Relation" widget="many2one"
                 	   context="{'kanban_view_ref':'plm.document_kanban_view',
-        						 'tree_view_ref':'plm.ir_attachment_tree',
+        						 'list_view_ref':'plm.ir_attachment_list',
 								 'form_view_ref':'plm.view_attachment_form_plm_hinerit'}"/>
             </field>
             <field name="product_qty" position="after">
@@ -65,10 +65,9 @@
         </field>
     </record>
 
-    <record id="plm_bom_tree_view" model="ir.ui.view">
-        <field name="name">plm.mrp.bom.tree</field>
+    <record id="plm_bom_list_view" model="ir.ui.view">
+        <field name="name">plm.mrp.bom.list</field>
         <field name="model">mrp.bom</field>
-        <field name="type">tree</field>
         <field name="inherit_id" ref="mrp.mrp_bom_tree_view"/>
         <field name="arch" type="xml">
         	<field name="product_tmpl_id" position="before">
@@ -92,7 +91,7 @@
                 <field name="product_qty"/>
                 <field name="engineering_revision"/>
             </field>
-            <xpath expr="//tree" position="attributes">
+            <xpath expr="//list" position="attributes">
             	<attribute name="decoration-info">engineering_state == 'confirmed'</attribute>
             	<attribute name="decoration-success">engineering_state == 'released'</attribute>
             	<attribute name="decoration-warning">engineering_state == 'undermodify'</attribute>
@@ -109,11 +108,14 @@
         <field name="priority" eval="16"/>
         <field name="arch" type="xml">
             <div class="oe_button_box" name="button_box" position="inside">
-                <button name="open_related_bom_lines" type="object" string="Related BOM Lines"
-                        class="oe_stat_button" icon="fa-tasks"/>
+                <button name="open_related_bom_lines"
+                        type="object"
+                        title=""
+                        class="oe_stat_button"
+                        icon="fa-tasks"/>
                 <button name="open_related_bom_revisions"
                         type="object"
-                        string="BOM Rev."
+                        title=""
                         class="oe_stat_button"
                         icon="fa-tasks"
                         invisible="bom_revision_count>=1">
@@ -132,10 +134,9 @@
 	                <button 
 	        			name="open_attachments"
 	        			type="object"
-	        			icon="plm/static/description/odoo_icon_small.png"
 	        			aria-label="Product Attachments"
-	        			string="."
-	        			class="float-right"
+	        			title="Open Attachment"
+	        			class="float-right fa-box-open"
 	        			invisible="att_count in [False,0]"/>
 				</div>
 		    </field>
@@ -153,15 +154,15 @@
                 <field name="engineering_state" readonly="True"/>
                 <field name="weight_net" readonly="True"/>
             </field>
-            <xpath expr="//field[@name='bom_line_ids']/tree" position="attributes">
+            <xpath expr="//field[@name='bom_line_ids']/list" position="attributes">
             	<attribute name="decoration-info">engineering_state == 'confirmed'</attribute>
             	<attribute name="decoration-success">engineering_state == 'released'</attribute>
             	<attribute name="decoration-warning">engineering_state == 'undermodify'</attribute>
             	<attribute name="decoration-muted">engineering_state == 'obsoleted'</attribute>
             </xpath>
-            <xpath expr="//field[@name='bom_line_ids']/tree/field[@name='product_id']" position="before">
-                <field name="related_bom_ids" invisible="True"/>
-                <field name="hasChildBoms" invisible="True"/>
+            <xpath expr="//field[@name='bom_line_ids']/list/field[@name='product_id']" position="before">
+                <field name="related_bom_ids" column_invisible="1" />
+                <field name="hasChildBoms" column_invisible="1" />
                 <field name="product_tumbnail" widget="image" options="{ 'size': [60, 60]}"/>
                 <button name="openRelatedBoms"
                         type="object"
@@ -169,40 +170,40 @@
                         title="Open Related Boms"
                         class="btn btn-sm oe_stat_button"
                         invisible="hasChildBoms==False"/>
-            	<field name="related_document_ids" invisible="True"/>
+            	<field name="related_document_ids" column_invisible="1"/>
             	<button 
   					name="openRelatedDocuments"
   					type="object"
-  					icon="plm/static/description/odoo_icon_small.png"
-  					string="."
+  					icon="fa-box-open" 
+  					title="Open related document"
   					class="float-right btn"
   					invisible="related_document_ids == []"/>
             </xpath>
-            <xpath expr="//field[@name='bom_line_ids']/tree/field[@name='product_id']" position="after">
+            <xpath expr="//field[@name='bom_line_ids']/list/field[@name='product_id']" position="after">
                 <field name="description" readonly="True"/>
                 <field name="engineering_revision" readonly="True"/>
                 <field name="engineering_state"/>
             </xpath>
-            <xpath expr="//field[@name='bom_line_ids']/tree/field[@name='product_qty']" position="before">
+            <xpath expr="//field[@name='bom_line_ids']/list/field[@name='product_qty']" position="before">
                 <field name="source_id" string="Source Relation" widget="many2one"
                 	   context="{'kanban_view_ref':'plm.document_kanban_view',
-        						 'tree_view_ref':'plm.ir_attachment_tree',
+        						 'list_view_ref':'plm.ir_attachment_list',
 								 'form_view_ref':'plm.view_attachment_form_plm_hinerit'}"/>
             </xpath>
-            <xpath expr="//field[@name='bom_line_ids']/tree/field[@name='product_id']" position="attributes">
+            <xpath expr="//field[@name='bom_line_ids']/list/field[@name='product_id']" position="attributes">
             	<attribute name="widget">many2one</attribute>
             </xpath>
-            <xpath expr="//field[@name='bom_line_ids']/tree/field[@name='product_uom_id']" position="after">
+            <xpath expr="//field[@name='bom_line_ids']/list/field[@name='product_uom_id']" position="after">
             	<field name="itemnum"/>
             	<field name="itemlbl" optional="hide"/>
             </xpath>
-            <xpath expr="//field[@name='bom_line_ids']/tree/field[@name='product_qty']" position="after">
+            <xpath expr="//field[@name='bom_line_ids']/list/field[@name='product_qty']" position="after">
                 <field name="hasChildBoms" invisible="True"/>
             </xpath>
 
-            <tree position="attributes">
+            <list position="attributes">
                 <attribute name="editable">bottom</attribute>
-            </tree>
+            </list>
         </field>
     </record>
 
@@ -257,36 +258,36 @@
         </field>
     </record>
 
-    <!-- Tree Structure Views on MRP -->
-    <record id="mrp_bom_tree_view_where" model="ir.ui.view">
-        <field name="name">mrp.bom.tree.where</field>
+    <!-- list Structure Views on MRP -->
+    <record id="mrp_bom_list_view_where" model="ir.ui.view">
+        <field name="name">mrp.bom.list.where</field>
         <field name="model">mrp.bom</field>
         <!-- not more supported on v17 <field name="field_parent">father_complete_ids</field> -->
         <field name="arch" type="xml">
-            <tree string="Where Used Bill of Materials">
+            <list string="Where Used Bill of Materials">
                 <field name="product_id" string="Component Name"/>
                 <!-- <field name="code" string="BoM Name"/> -->
                 <field name="engineering_revision" string="Revision"/>
                 <field name="description"/>
                 <field name="source_id" string="Source Relation" widget="many2one"
                 	   context="{'kanban_view_ref':'plm.document_kanban_view',
-        						 'tree_view_ref':'plm.ir_attachment_tree',
+        						 'list_view_ref':'plm.ir_attachment_list',
 								 'form_view_ref':'plm.view_attachment_form_plm_hinerit'}"/>
                 <field name="product_qty"/>
                 <field name="product_uom_id"/>
                 <field name="weight_net"/>
                 <field name="create_date" select="True"/>
                 <field name="type"/>
-            </tree>
+            </list>
         </field>
     </record>
 
-    <record id="plm_bom_tree_structure" model="ir.ui.view">
-        <field name="name">plm.bom.tree</field>
+    <record id="plm_bom_list_structure" model="ir.ui.view">
+        <field name="name">plm.bom.list</field>
         <field name="model">mrp.bom.line</field>
         <!-- not more supported on v17 <field name="field_parent">child_line_ids</field> -->
         <field name="arch" type="xml">
-            <tree string="Bill of Materials">
+            <list string="Bill of Materials">
                 <field name="itemnum" string="Position"/>
                 <field name="product_id" string="Component Name"/>
                 <field name="engineering_revision" string="Revision"/>
@@ -294,23 +295,23 @@
                 <field string="Tags" name="product_tag_ids"/>
                 <field name="source_id" string="Source Relation" widget="many2one"
                 	   context="{'kanban_view_ref':'plm.document_kanban_view',
-        						 'tree_view_ref':'plm.ir_attachment_tree',
+        						 'list_view_ref':'plm.ir_attachment_list',
 								 'form_view_ref':'plm.view_attachment_form_plm_hinerit'}"/>
                 <field name="product_qty"/>
                 <field name="product_uom_id"/>
                 <field name="weight_net"/>
                 <field name="create_date" select="True"/>
-            </tree>
+            </list>
         </field>
     </record>
 
-    <!-- Tree Structure Actions on MRP -->
+    <!-- list Structure Actions on MRP -->
     <record id="action2" model="ir.actions.act_window">
         <field name="name">Bill of Materials Structure</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">mrp.bom.line</field>
         <field name="domain">[('bom_id', 'in', active_ids)]</field>
-        <field name="view_id" ref="plm_bom_tree_structure"/>
+        <field name="view_id" ref="plm_bom_list_structure"/>
     </record>
 
 </odoo>

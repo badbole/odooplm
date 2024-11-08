@@ -22,19 +22,19 @@
             </form>   
         </field>
     </record>
-    
-    <record model="ir.ui.view" id="plm_automatedwfaction_tree">
-        <field name="name">plm.automatedwfaction.tree</field>
+
+    <record model="ir.ui.view" id="plm_automatedwfaction_list">
+        <field name="name">plm.automatedwfaction.list</field>
         <field name="model">plm.automatedwfaction</field>
         <field name="priority" eval="1"/>
         <field name="arch" type="xml">
-          <tree>
+          <list>
            <field name="name"/>
            <field name="from_state"/>
            <field name="to_state"/>
            <field name="apply_to"/>
            <field name="before_after"/>               
-          </tree>
+          </list>
         </field>
     </record>   
     
@@ -42,7 +42,7 @@
         <field name="name">WorkFlow Actions</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">plm.automatedwfaction</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
         <field name="context">{'odooPLM': True}</field>
     </record>
         

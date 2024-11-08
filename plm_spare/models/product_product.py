@@ -36,7 +36,7 @@ class ProductTemplate(models.Model):
     def open_spare_bom(self):
         boms = self.get_related_boms()
         domain = [('id', 'in', boms.ids), ('type', '=', 'spbom')]
-        return self.common_open(_('Related Boms'), 'mrp.bom', 'tree,form', 'form', boms.ids, self.env.context, domain)
+        return self.common_open(_('Related Boms'), 'mrp.bom', 'list,form', 'form', boms.ids, self.env.context, domain)
 
     def create_spare_bom(self):
         context = self.env.context.copy()

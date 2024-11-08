@@ -4,7 +4,6 @@
     <record model="ir.ui.view" id="view_plm_material">
         <field name="name">plm.material.view</field>
         <field name="model">plm.material</field>
-        <field name="type">form</field>
         <field name="arch" type="xml">
             <form string="Material">
             	<sheet>	
@@ -18,17 +17,16 @@
         </field>
     </record>
     
-    <record model="ir.ui.view" id="plm_view_material_tree">
-        <field name="name">plm.view.material.tree</field>
+    <record model="ir.ui.view" id="plm_view_material_list">
+        <field name="name">plm.view.material.list</field>
         <field name="model">plm.material</field>
-        <field name="type">tree</field>
         <field name="priority" eval="1"/>
         <field name="arch" type="xml">
-            <tree string="Materials">
+            <list string="Materials"  editable="bottom">
                    <field name="name"/>
                    <field name="description"/>
                    <field name="sequence"/>
-            </tree>
+            </list>
         </field>
     </record>
 
@@ -36,8 +34,8 @@
         <field name="name">Materials</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">plm.material</field>
-        <field name="view_mode">tree,form</field>
-        <field name="view_id" ref="plm_view_material_tree"/>
+        <field name="view_mode">list,form</field>
+        <field name="view_id" ref="plm_view_material_list"/>
     </record>
     
     

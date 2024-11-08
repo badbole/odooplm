@@ -5,7 +5,6 @@
     <record model="ir.ui.view" id="plm_cad_open_search_bck">
         <field name="name">plm.cad.open.search.bck</field>
         <field name="model">plm.cad.open.bck</field>
-        <field name="type">search</field>
         <field name="priority" eval="1"/>
         <field name="arch" type="xml">
             <search string="Checked-Out Document">
@@ -50,7 +49,6 @@
     <record model="ir.ui.view" id="plm_cad_open_form_bck">
         <field name="name">plm.cad.open.form.bck</field>
         <field name="model">plm.cad.open.bck</field>
-        <field name="type">form</field>
         <field name="arch" type="xml">
             <form string="Plm Cad Open Bck">
             	<sheet>	
@@ -69,13 +67,12 @@
         </field>
     </record>
 
-    <record model="ir.ui.view" id="plm_cad_open_tree_bck">
-        <field name="name">plm.cad.open.tree.bck</field>
+    <record model="ir.ui.view" id="plm_cad_open_list_bck">
+        <field name="name">plm.cad.open.list.bck</field>
         <field name="model">plm.cad.open.bck</field>
-        <field name="type">tree</field>
         <field name="priority" eval="1"/>
         <field name="arch" type="xml">
-            <tree string="Plm Cad Open Bck" create="false" edit="false" delete='false' decoration-success="operation_type == 'save'"
+            <list string="Plm Cad Open Bck" create="false" edit="false" delete='false' decoration-success="operation_type == 'save'"
             																		   decoration-info="operation_type == 'open'"
             																		   decoration-warning="operation_type == 'check-out'">
                 <field name="userid" select="1"/>
@@ -85,7 +82,7 @@
                 <field name="hostname"/>
                 <field name="operation_type"/>
                 <field name="create_date"/>
-            </tree>
+            </list>
         </field>
     </record>
 
@@ -93,7 +90,7 @@
         <field name="name">Plm Cad Open Bck</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">plm.cad.open.bck</field>
-        <field name="view_id" ref="plm_cad_open_tree_bck"/>
+        <field name="view_id" ref="plm_cad_open_list_bck"/>
         <field name="search_view_id" ref="plm_cad_open_search_bck"/>
     </record>
 

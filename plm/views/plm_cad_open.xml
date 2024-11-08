@@ -5,7 +5,6 @@
     <record model="ir.ui.view" id="plm_cad_open_search">
         <field name="name">plm.cad.open.search</field>
         <field name="model">plm.cad.open</field>
-        <field name="type">search</field>
         <field name="priority" eval="1"/>
         <field name="arch" type="xml">
             <search string="Checked-Out Document">
@@ -45,7 +44,6 @@
     <record model="ir.ui.view" id="plm_cad_open_form">
         <field name="name">plm.cad.open.form</field>
         <field name="model">plm.cad.open</field>
-        <field name="type">form</field>
         <field name="arch" type="xml">
             <form string="Plm checkout">
             	<sheet>	
@@ -64,13 +62,12 @@
         </field>
     </record>
 
-    <record model="ir.ui.view" id="plm_cad_open_tree">
-        <field name="name">plm.cad.open.tree</field>
+    <record model="ir.ui.view" id="plm_cad_open_list">
+        <field name="name">plm.cad.open.list</field>
         <field name="model">plm.cad.open</field>
-        <field name="type">tree</field>
         <field name="priority" eval="1"/>
         <field name="arch" type="xml">
-            <tree string="Plm Cad Open" create="false" edit="false" decoration-success="operation_type == 'save'"
+            <list string="Plm Cad Open" create="false" edit="false" decoration-success="operation_type == 'save'"
             														decoration-info="operation_type == 'open'"
             														decoration-warning="operation_type == 'check-out'">
                 <field name="userid" select="1"/>
@@ -80,7 +77,7 @@
                 <field name="hostname"/>
                 <field name="operation_type"/>
                 <field name="create_date"/>
-            </tree>
+            </list>
         </field>
     </record>
 
@@ -88,7 +85,7 @@
         <field name="name">Plm Cad Open</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">plm.cad.open</field>
-        <field name="view_id" ref="plm_cad_open_tree"/>
+        <field name="view_id" ref="plm_cad_open_list"/>
         <field name="search_view_id" ref="plm_cad_open_search"/>
     </record>
  

@@ -3,7 +3,6 @@
     <record model="ir.ui.view" id="plm_component_base_search">
         <field name="name">plm.base.component.search</field>
         <field name="model">product.product</field>
-        <field name="type">search</field>
         <field name="priority" eval="15"/>
         <field name="arch" type="xml">
             <search string="Parts">
@@ -85,7 +84,6 @@
     <record model="ir.ui.view" id="view_product_client_workflow">
         <field name="name">view.product.client.workflow</field>
         <field name="model">product.product</field>
-        <field name="type">form</field>
         <field name="priority" eval="20"/>
         <field name="arch" type="xml">
             <form string="Engineering Product">
@@ -120,7 +118,6 @@
     <record model="ir.ui.view" id="plm_component_base_form">
         <field name="name">plm.base.component</field>
         <field name="model">product.product</field>
-        <field name="type">form</field>
         <field name="priority" eval="20"/>
         <field name="arch" type="xml">
             <form string="Engineering Product" version="7.0">
@@ -202,7 +199,6 @@
                         <field name="desc_modify" colspan="4"
                                readonly="engineering_state in ['released','obsoleted']"
                                invisible="engineering_revision==0"/>
-	                    <field name="detailed_type" invisible="1"/>
 	                    <field name="source_product" invisible="1"/>
 	                    <field name="is_engcode_editable" invisible="1"/>
                     </group>
@@ -434,7 +430,7 @@
                            widget="hierarchy_kanban"
                     	   context="{'odooPLM': True,
                                      'kanban_view_ref':'plm.document_kanban_view',
-		 					         'tree_view_ref':'plm.ir_attachment_tree',
+		 					         'list_view_ref':'plm.ir_attachment_list',
 		                             'form_view_ref':'plm.view_attachment_form_plm_hinerit'}"/>
                 </page>
             </xpath>
@@ -453,51 +449,52 @@
                 <field name="engineering_state"/>
             </xpath>
             
-            <xpath expr="//div/div[hasclass('o_kanban_image')]" position="replace">
-                <t t-value="record.engineering_state.raw_value" t-set="stateToUse"/>
-                <field name="engineering_code"/>-
-                <field name="engineering_revision"/>-
-                <t t-if="stateToUse == 'draft'">
-				    <span style="color: rgb(110, 51, 197);padding-left: 5px;">
-				        <b>
-				            <field name="engineering_state"/>
-				        </b>
-				    </span>
-				</t>
-				<t t-if="stateToUse == 'confirmed'">
-				    <span style="color: blue;padding-left: 5px;">
-				        <b>
-				            <field name="engineering_state"/>
-				        </b>
-				    </span>
-				</t>
-				<t t-if="stateToUse == 'released'">
-				    <span style="color: rgba(0, 170, 34, 0.66);padding-left: 5px;">
-				        <b>
-				            <field name="engineering_state"/>
-				        </b>
-				    </span>
-				</t>
-				<t t-if="stateToUse == 'undermodify'">
-				    <span style="color: rgb(218, 159, 34);padding-left: 5px;">
-				        <b>
-				            <field name="engineering_state"/>
-				        </b>
-				    </span>
-				</t>
-				<t t-if="stateToUse == 'obsoleted'">
-				    <span style="color: rgb(231, 43, 26);padding-left: 5px;">
-				        <b>
-				            <field name="engineering_state"/>
-				        </b>
-				    </span>
-				</t>
-                <t t-if="image_small" >  
-                    <div class="o_kanban_image">
-                        <img t-att-src="kanban_image('product.product', 'image_small', record.id.raw_value)" alt="Product"/>
-                    </div>
-                </t>
-            </xpath>
+<!--            <xpath expr="//div/div[hasclass('o_kanban_image')]" position="replace">-->
+<!--                <t t-value="record.engineering_state.raw_value" t-set="stateToUse"/>-->
+<!--                <field name="engineering_code"/>-->
+<!--                <field name="engineering_revision"/>-->
+<!--                <t t-if="stateToUse == 'draft'">-->
+<!--				    <span style="color: rgb(110, 51, 197);padding-left: 5px;">-->
+<!--				        <b>-->
+<!--				            <field name="engineering_state"/>-->
+<!--				        </b>-->
+<!--				    </span>-->
+<!--				</t>-->
+<!--				<t t-if="stateToUse == 'confirmed'">-->
+<!--				    <span style="color: blue;padding-left: 5px;">-->
+<!--				        <b>-->
+<!--				            <field name="engineering_state"/>-->
+<!--				        </b>-->
+<!--				    </span>-->
+<!--				</t>-->
+<!--				<t t-if="stateToUse == 'released'">-->
+<!--				    <span style="color: rgba(0, 170, 34, 0.66);padding-left: 5px;">-->
+<!--				        <b>-->
+<!--				            <field name="engineering_state"/>-->
+<!--				        </b>-->
+<!--				    </span>-->
+<!--				</t>-->
+<!--				<t t-if="stateToUse == 'undermodify'">-->
+<!--				    <span style="color: rgb(218, 159, 34);padding-left: 5px;">-->
+<!--				        <b>-->
+<!--				            <field name="engineering_state"/>-->
+<!--				        </b>-->
+<!--				    </span>-->
+<!--				</t>-->
+<!--				<t t-if="stateToUse == 'obsoleted'">-->
+<!--				    <span style="color: rgb(231, 43, 26);padding-left: 5px;">-->
+<!--				        <b>-->
+<!--				            <field name="engineering_state"/>-->
+<!--				        </b>-->
+<!--				    </span>-->
+<!--				</t>-->
+<!--                <t t-if="image_small" >  -->
+<!--                    <div class="o_kanban_image">-->
+<!--                        <img t-att-src="kanban_image('product.product', 'image_small', record.id.raw_value)" -->
+<!--                             alt="Product"/>-->
+<!--                    </div>-->
+<!--                </t>-->
+<!--            </xpath>-->
             <xpath expr="//templates/t[1]" position="after">
                  <t t-name="previews">
                         <div style="display: -webkit-inline-box;  padding-left: 10px;">
@@ -517,11 +514,11 @@
                         </div>
                     </t>
             </xpath>
-            <xpath expr="//div[@name='tags']" position="after">
-                <div class="preview_container">
-                    <t t-call="previews"/>
-               </div>
-            </xpath>
+<!--             <xpath expr="//div[@name='tags']" position="after"> -->
+<!--                 <div class="preview_container"> -->
+<!--                     <t t-call="previews"/> -->
+<!--                </div> -->
+<!--             </xpath> -->
         </field>
    </record> 
 
@@ -529,7 +526,7 @@
     <record model="ir.actions.act_window" id="action_plm_component_base_cad_form">
         <field name="name">Engineering Parts</field>
         <field name="res_model">product.product</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
         <field name="view_id" ref="plm_component_base_form"/>
         <field name="context">{"search_default_latest": 1, 'odooPLM': True}</field>
         <field name="domain">[('engineering_code','not in', ('', False))]</field>
@@ -538,7 +535,7 @@
    <record model="ir.actions.act_window" id="action_plm_component_base">
         <field name="name">Engineering Parts</field>
         <field name="res_model">product.product</field>
-        <field name="view_mode">kanban,tree,form</field>
+        <field name="view_mode">kanban,list,form</field>
         <field name="view_id" ref="plm_component_base_tree"/>
         <field name="context">{"search_default_latest": 1, 'odooPLM': True}</field>
         <field name="domain">[('engineering_code','not in', ('', False))]</field>

@@ -5,7 +5,6 @@
         <field name="name">ir.attachment.convert</field>
         <field name="model">ir.attachment</field>
         <field name="priority" eval="1"/>
-        <field name="type">form</field>
         <field name="inherit_id" ref="plm.view_attachment_form_plm_hinerit"/>
         <field name="arch" type="xml">
 			<xpath expr="//field[@name='is_plm']" position="before">
@@ -19,7 +18,7 @@
 	<record id="plm_batch_convertion_ir_attachment" model="ir.ui.view">
 		<field name="name">plm.batch.convertion.ir.attachment</field>
 		<field name="model">ir.attachment</field>
-		<field name="inherit_id" ref="plm.ir_attachment_tree"/>
+		<field name="inherit_id" ref="plm.ir_attachment_list"/>
 		<field name="priority" eval="3"/>
 		<field name="arch" type="xml">
 			<field name="engineering_code" position="before">
@@ -32,7 +31,6 @@
         <field name="name">ir.attachment.convert</field>
         <field name="model">ir.attachment</field>
         <field name="priority" eval="1"/>
-        <field name="type">kanban</field>
         <field name="inherit_id" ref="plm.document_kanban_view"/>
         <field name="arch" type="xml">
 			<xpath expr="//td[@name='attachment_button_box']" position="inside">

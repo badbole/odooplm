@@ -48,7 +48,7 @@ class ProductProduct(models.Model):
         return {'name': _('Convert Stack'),
                 'res_model': "plm.convert.stack",
                 'view_type': 'form',
-                'view_mode': 'tree,form',
+                'view_mode': 'list,form',
                 'type': 'ir.actions.act_window',
                 'domain': [('id', 'in', convert_stacks.ids)],
                 'context': {}}

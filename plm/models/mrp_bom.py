@@ -126,11 +126,11 @@ class MrpBomExtension(models.Model):
             'domain': [('id', 'in', out_att.ids)],
             'res_model': 'ir.attachment',
             'type': 'ir.actions.act_window',
-            'view_mode': 'kanban,tree,form',
+            'view_mode': 'kanban,list,form',
             'views': [
                 (self.env.ref('plm.document_kanban_view').id, 'kanban'),
                 (self.env.ref('plm.view_attachment_form_plm_hinerit').id, 'form'),
-                (self.env.ref('plm.ir_attachment_tree').id, 'tree'),
+                (self.env.ref('plm.ir_attachment_list').id, 'list'),
                 ],
             'help': _('''<p class="o_view_nocontent_smiling_face">
                         Upload files to your product
@@ -750,8 +750,8 @@ class MrpBomExtension(models.Model):
             return {'name': _('B.O.M. Lines'),
                     'res_model': 'mrp.bom.line',
                     'view_type': 'form',
-                    'view_mode': 'tree',
-                    'view_id': self.env.ref("plm.plm_mrp_bom_line_summarize_tree").id,
+                    'view_mode': 'list',
+                    'view_id': self.env.ref("plm.plm_mrp_bom_line_summarize_list").id,
                     'search_view_id': self.env.ref("plm.plm_grp_by_parent").id,
                     'type': 'ir.actions.act_window',
                     'domain': [('id', 'in', bom_line_ids)],
@@ -764,7 +764,7 @@ class MrpBomExtension(models.Model):
         return {'name': _('B.O.M.S'),
                 'res_model': 'mrp.bom',
                 'view_type': 'form',
-                'view_mode': 'tree,form',
+                'view_mode': 'list,form',
                 'type': 'ir.actions.act_window',
                 'domain': [('id', 'in', bom_ids.ids)],
                 'context': {}}

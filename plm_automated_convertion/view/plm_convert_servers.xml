@@ -5,7 +5,6 @@
     <record model="ir.ui.view" id="plm_convert_servers_search">
         <field name="name">plm.convert.servers.search</field>
         <field name="model">plm.convert.servers</field>
-        <field name="type">search</field>
         <field name="priority" eval="1"/>
         <field name="arch" type="xml">
             <search string="Plm Convert Servers">
@@ -20,7 +19,6 @@
     <record model="ir.ui.view" id="plm_convert_servers_form">
         <field name="name">plm.convert.servers.form</field>
         <field name="model">plm.convert.servers</field>
-        <field name="type">form</field>
         <field name="arch" type="xml">
             <form string="Plm Convert Servers">
             	<sheet>	
@@ -54,33 +52,32 @@
 		                <field name="client_processes" readonly="True" colspan="4" nolabel="1"/>
 		            </group>
 		            <field name="available_format">
-		              <tree>
+		              <list>
 		                  <field name="available" widget="boolean_toggle"/>
 		                  <field name="name"/>
 		                  <field name="sequence"/>
 		                  <field name="start_format"/>
 		                  <field name="end_format"/>
 		                  <field name="cad_name"/>
-		              </tree>
+		              </list>
 		            </field>
                	</sheet> 
             </form>
         </field>
     </record>
 
-    <record model="ir.ui.view" id="plm_convert_servers_tree">
-        <field name="name">plm.convert.servers.tree</field>
+    <record model="ir.ui.view" id="plm_convert_servers_list">
+        <field name="name">plm.convert.servers.list</field>
         <field name="model">plm.convert.servers</field>
-        <field name="type">tree</field>
         <field name="priority" eval="1"/>
         <field name="arch" type="xml">
-            <tree string="Plm Convert Servers">
+            <list string="Plm Convert Servers">
             	<field name="sequence" widget="handle"/>
                 <field name="name"/>
                 <field name="address"/>
                 <field name="protocol"/>
                 <field name="port"/>
-            </tree>
+            </list>
         </field>
     </record>
 
@@ -88,7 +85,7 @@
         <field name="name">Plm Convert Servers</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">plm.convert.servers</field>
-        <field name="view_id" ref="plm_convert_servers_tree"/>
+        <field name="view_id" ref="plm_convert_servers_list"/>
         <field name="search_view_id" ref="plm_convert_servers_search"/>
     </record>
 

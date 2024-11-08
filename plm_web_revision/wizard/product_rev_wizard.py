@@ -63,7 +63,7 @@ class ProductProductExtended(models.TransientModel):
             new_product_id = self.env['product.product'].search([('product_tmpl_id','=', new_product_template_id.id)], limit=1)
             
             return {'name': _('Revised Product'),
-                    'view_type': 'tree,form',
+                    'view_type': 'list,form',
                     "view_mode": 'form',
                     'res_model': 'product.product',
                     'res_id': new_product_id.id,

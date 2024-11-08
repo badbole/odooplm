@@ -134,7 +134,7 @@ class MrpBomLineExtension(models.Model):
                         'view_type': 'form',
                         'res_model': 'mrp.bom',
                         'type': 'ir.actions.act_window',
-                        'view_mode': 'tree,form'}
+                        'view_mode': 'list,form'}
         if len(ids_to_open) == 1:
             out_act_dict['view_mode'] = 'form'
             out_act_dict['res_id'] = ids_to_open[0]
@@ -146,7 +146,7 @@ class MrpBomLineExtension(models.Model):
                 domain.append(('type', 'in', ['normal','subcontract', 'phantom']))
                 out_act_dict['view_ids'] = [
                     (5, 0, 0),
-                    (0, 0, {'view_mode': 'tree', 'view_id': self.env.ref('plm.plm_bom_tree_view').id}),
+                    (0, 0, {'view_mode': 'list', 'view_id': self.env.ref('plm.plm_bom_tree_view').id}),
                     (0, 0, {'view_mode': 'form', 'view_id': self.env.ref('plm.plm_bom_form_view').id})
                 ]
             elif line_brws.type == 'spbom':
@@ -160,11 +160,11 @@ class MrpBomLineExtension(models.Model):
         out_act_dict = {'name': _('Documents'),
                         'res_model': 'ir.attachment',
                         'type': 'ir.actions.act_window',
-                        'view_mode': 'kanban,tree,form',
+                        'view_mode': 'kanban,list,form',
                         'views': [
                             (self.env.ref('plm.document_kanban_view').id, 'kanban'),
                             (self.env.ref('plm.view_attachment_form_plm_hinerit').id, 'form'),
-                            (self.env.ref('plm.ir_attachment_tree').id, 'tree'),
+                            (self.env.ref('plm.ir_attachment_list').id, 'list'),
                             ],
                         'domain': domain}
         return out_act_dict
@@ -175,32 +175,32 @@ class MrpBomLineExtension(models.Model):
             bom_line_brws.related_document_ids = bom_line_brws.product_id.linkeddocuments
 
     engineering_state = fields.Selection(related="product_id.engineering_state",
-                                         string=_("Status"),
-                                         help=_("The status of the product in its LifeCycle."),
+                                         string="Status",
+                                         help="The status of the product in its LifeCycle.",
                                          store=False)
     description = fields.Char(related="product_id.name",
-                              string=_("Description"),
+                              string="Description",
                               store=False)
     weight_net = fields.Float(related="product_id.weight",
-                              string=_("Weight Net"),
+                              string="Weight Net",
                               store=False)
-    create_date = fields.Datetime(_('Creation Date'),
+    create_date = fields.Datetime('Creation Date',
                                   readonly=True)
     source_id = fields.Many2one('ir.attachment',
                                 'engineering_code',
                                 ondelete='no action',
                                 readonly=True,
                                 index=True,
-                                help=_("This is the document object that declares this BoM."))
+                                help="This is the document object that declares this BoM.")
     
     type = fields.Selection(related="bom_id.type")
-    itemnum = fields.Integer(_('CAD Item Position'), help=_(
-        "This is the item reference position into the CAD document that declares this BoM."))
-    itemlbl = fields.Char(_('CAD Item Position Label'), size=64)
+    itemnum = fields.Integer('CAD Item Position', help=
+        "This is the item reference position into the CAD document that declares this BoM.")
+    itemlbl = fields.Char('CAD Item Position Label', size=64)
 
     engineering_revision = fields.Integer(related="product_id.engineering_revision",
-                                          string=_("Revision"),
-                                          help=_("The revision of the product."),
+                                          string="Revision",
+                                          help="The revision of the product.",
                                           store=False)
     hasChildBoms = fields.Boolean(compute='_has_children_boms',
                                   string='Has Children Boms')
@@ -210,12 +210,12 @@ class MrpBomLineExtension(models.Model):
                                       readonly=True)
     related_document_ids = fields.One2many(compute='_related_doc_ids',
                                            comodel_name='ir.attachment',
-                                           string=_('Related Documents'))
+                                           string='Related Documents')
     cutted_type = fields.Selection(
         [('none', 'None'),
          ('client', 'Client'),
          ('server', 'Server')],
-        _('Cutted Compute Type'),
+        'Cutted Compute Type',
         default='none')
     
     product_tag_ids = fields.Many2many(related='product_tmpl_id.product_tag_ids')

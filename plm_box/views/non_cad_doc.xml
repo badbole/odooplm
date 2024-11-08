@@ -5,7 +5,6 @@
         <record id="plm_box_form_view" model="ir.ui.view">
             <field name="name">plm.box.form</field>
             <field name="model">plm.box</field>
-            <field name="type">form</field>
         	<field name="priority" eval="10"/>
             <field name="arch" type="xml">
                 <form string="Show Non CAD Document Relation">
@@ -81,27 +80,26 @@
             </field>
         </record>
         
-       <record id="plm_box_tree" model="ir.ui.view">
-            <field name="name">plm.box.tree</field>
+       <record id="plm_box_list" model="ir.ui.view">
+            <field name="name">plm.box.list</field>
             <field name="model">plm.box</field>
-            <field name="type">tree</field>
         	<field name="priority" eval="10"/>
             <field name="arch" type="xml">
-                <tree string="Non CAD Document Relations">
+                <list string="Non CAD Document Relations">
                 	<field name="engineering_code" />
                     <field name="description" />
                     <field name="document_rel" />
                     <field name="plm_box_rel" />
                     <field name="version" />
-                </tree>
+                </list>
             </field>
         </record>
 
     <record model="ir.actions.act_window" id="action_non_cad_doc">
     	<field name="name">Non CAD Document Relations</field>
     	 <field name="res_model">plm.box</field>
-        <field name="view_mode">tree,form</field>
-        <field name="view_id" ref="plm_box_tree"/>
+        <field name="view_mode">list,form</field>
+        <field name="view_id" ref="plm_box_list"/>
     </record>
 
     <menuitem

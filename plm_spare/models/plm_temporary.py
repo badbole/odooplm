@@ -56,7 +56,7 @@ class PlmTemporary(models.TransientModel):
         product_type.browse(active_ids).action_create_spare_bom_wf()
         return {'name': _('Bill of Materials'),
                 'view_type': 'form',
-                "view_mode": 'tree,form',
+                "view_mode": 'list,form',
                 'res_model': 'mrp.bom',
                 'type': 'ir.actions.act_window',
                 'domain': "[('product_id','in', [" + ','.join(map(str, active_ids)) + "])]",

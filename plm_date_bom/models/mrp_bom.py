@@ -88,7 +88,7 @@ class mrp_bom_extension_data(models.Model):
             'type': 'ir.actions.act_window',
             'name': _('Product Engineering'),
             'view_type': 'form',
-            'view_mode': 'tree,form',
+            'view_mode': 'list,form',
             'res_model': 'mrp.bom',
             'domain': [('id', 'in', outLines)],
         }

@@ -4,7 +4,6 @@
 		<record id="act_plm_pack_and_go" model="ir.ui.view">
         <field name="name">pack.and_go.form</field>
         <field name="model">pack.and_go</field>
-        <field name="type">form</field>
         <field name="arch" type="xml">
         <form string="Export Form">
             <field name="convertion_server_available" invisible="1"/>
@@ -34,7 +33,7 @@
 			        </group>
 			        <group colspan="4">
 					   <field name="export_2d" colspan="2" nolabel="1">
-					       <tree editable='bottom' >
+					       <list editable='bottom' >
 						                <field name="component_id" readonly="1"/>
 						                <field name="comp_rev" readonly="1"/>
 						                <field name="comp_description" readonly="1"/>
@@ -43,7 +42,7 @@
 						                <field name="doc_rev" readonly="1"/>
 						                <field name="document_description" readonly="1"/>
 						                <field name="available_types" options="{'no_open':True,'no_create':True}"/>
-						   </tree>
+						   </list>
 						</field>
 					</group>
                 </page>
@@ -51,7 +50,7 @@
                     <button string="Clear" name="clearpdf" type="object"/>
                     <group>
 					   <field name="export_pdf" colspan="2" nolabel="1">
-						<tree editable='bottom'>
+						<list editable='bottom'>
 			                <field name="component_id" readonly="1"/>
 			                <field name="comp_rev" readonly="1"/>
 			                <field name="comp_description" readonly="1"/>
@@ -59,7 +58,7 @@
 			                <field name="doc_file_name" readonly="1"/>
 			                <field name="doc_rev" readonly="1"/>
 			                <field name="document_description" readonly="1"/>
-			            </tree>
+			            </list>
                        </field>
 					</group>
                 </page>
@@ -73,7 +72,7 @@
 			        </group>
                     <group>
 	                    <field name="export_3d" colspan="2" nolabel="1">
-	                        <tree editable='bottom'>
+	                        <list editable='bottom'>
 	                            <field name="component_id" readonly="1"/>
 	                            <field name="comp_rev" readonly="1"/>
 	                            <field name="comp_description" readonly="1"/>
@@ -82,7 +81,7 @@
 	                            <field name="doc_rev" readonly="1"/>
 	                            <field name="document_description" readonly="1"/>
 	                            <field name="available_types" options="{'no_open':True,'no_create':True}"/>
-	                        </tree>
+	                        </list>
 	                    </field>
 					</group>
                 		</page>
@@ -90,7 +89,7 @@
                         	<button string="Clear" name="clearother" type="object"/>
                         	<group>
 					            <field name="export_other" colspan="2" nolabel="1">
-						            <tree editable='bottom'>
+						            <list editable='bottom'>
 						                <field name="component_id" readonly="1"/>
 						                <field name="comp_rev" readonly="1"/>
 						                <field name="comp_description" readonly="1"/>
@@ -98,7 +97,7 @@
 						                <field name="doc_file_name" readonly="1"/>
 						                <field name="doc_rev" readonly="1"/>
 						                <field name="document_description" readonly="1"/>
-						            </tree>
+						            </list>
 						        </field>
 						    </group>
                 		</page>
@@ -138,7 +137,6 @@
     <record model="ir.ui.view" id="view_pack_and_go_view_form">
         <field name="name">pack.and.go.view.form</field>
         <field name="model">pack_and_go_view</field>
-        <field name="type">form</field>
         <field name="arch" type="xml">
             <form>
             	<sheet>
@@ -160,17 +158,16 @@
         </field>
     </record>
     
-    <record model="ir.ui.view" id="view_pack_and_go_view_tree">
-        <field name="name">pack.and.go.view.tree</field>
+    <record model="ir.ui.view" id="view_pack_and_go_view_list">
+        <field name="name">pack.and.go.view.list</field>
         <field name="model">pack_and_go_view</field>
-        <field name="type">tree</field>
         <field name="arch" type="xml">
-            <tree>
+            <list>
                 <field name="component_id"/>
                 <field name="comp_rev"/>
                 <field name="document_id"/>
                 <field name="doc_rev"/>
-            </tree>
+            </list>
         </field>
     </record>
         		

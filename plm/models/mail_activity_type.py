@@ -31,8 +31,8 @@ from odoo import _
 class MailActivityType(models.Model):
     _inherit = 'mail.activity.type'
 
-    change_activity_type = fields.Selection(selection=[
-        ('request', _('Request')),
-        ('plm_activity', _('Order'))
-        ], string=_('Change Activity Type'))
+    change_activity_type = fields.Selection(selection=[('request', 'Request'),
+                                                       ('plm_activity', 'Order')
+                                                       ], 
+                                            string='Change Activity Type')
     

@@ -20,7 +20,7 @@
 ##############################################################################
 {
     "name": "Plm Pack and Go",
-    "version": "17.0.0.3",
+    "version": "18.0.0.1",
     "author": "OmniaSolutions",
     "website": "https://odooplm.omniasolutions.website",
     "category": "Manufacturing/Product Lifecycle Management (PLM)",

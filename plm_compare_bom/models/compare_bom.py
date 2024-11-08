@@ -365,7 +365,7 @@ class plm_compare_bom(models.TransientModel):
             'domain': [],
             'name': _('Differences on BoMs'),
             'view_type': 'form',
-            'view_mode': 'tree,form',
+            'view_mode': 'list,form',
             'res_model': 'plm.compare.bom',
             'res_id': self.ids[0],
             'views': [(id3, 'form')],

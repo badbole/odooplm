@@ -419,8 +419,9 @@ class RevisionBaseMixin(models.AbstractModel):
         return super(RevisionBaseMixin, self).write(vals)
 
     def create(self, vals):
-        if 'engineering_code' in vals and vals['engineering_code'] not in [False, '-','']:
-            vals['engineering_code_editable']=False
+        for record_val in vals:
+            if 'engineering_code' in record_val and record_val['engineering_code'] not in [False, '-','']:
+                record_val['engineering_code_editable']=False
         return super(RevisionBaseMixin, self).create(vals)
         
     def get_display_notification(self, message):
@@ -463,5 +464,15 @@ class RevisionBaseMixin(models.AbstractModel):
                     out[propKey] = getattr(obj.with_context(lang=code), field_name)
         return out
         
+    @api.model
+    def get_possible_status(self):
+        out=[]
+        for model_id in self.env['ir.model'].sudo().search([('model','=', self._name)]):
+            for filed_id in self.env['ir.model.fields'].sudo().search([('model_id','=', model_id.id),
+                                                                ('name', '=', 'engineering_state')]):
+                for ir_model_fields_selection in self.env['ir.model.fields.selection'].sudo().search([('field_id','=',filed_id.id)]):
+                    out.append((ir_model_fields_selection.name,
+                                ir_model_fields_selection.value))    
+        return out
         
         

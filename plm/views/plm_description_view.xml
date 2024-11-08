@@ -5,7 +5,6 @@
     <record model="ir.ui.view" id="view_plm_description">
         <field name="name">plm.description.view</field>
         <field name="model">plm.description</field>
-        <field name="type">form</field>
         <field name="arch" type="xml">
              <form string="Description"  version="7.0"> 
              	<sheet>	
@@ -25,7 +24,6 @@
 	                    <newline/>
 	                    <field name="description" select="1" placeholder="Standard Description"/>
 	                    <field name="description_en" select="1" />
-	                    <separator/>
 	                </group>
   	               	<group colspan="4" col="4" string="Technical Features" name="tech_features">
   	               				<field name="show_help" invisible="True"></field>
@@ -135,13 +133,12 @@
         </field>
     </record>
     
-    <record model="ir.ui.view" id="plm_view_description_tree">
-        <field name="name">plm.view.description.tree</field>
+    <record model="ir.ui.view" id="plm_view_description_list">
+        <field name="name">plm.view.description.list</field>
         <field name="model">plm.description</field>
-        <field name="type">tree</field>
         <field name="priority" eval="1"/>
         <field name="arch" type="xml">
-        	<tree string="Descriptions">
+        	<list string="Descriptions">
             		<field name="name"/>
                    	<field name="description"/>
                    	<field name="description_en"/>
@@ -154,7 +151,7 @@
                    	<field name="fmtend"/>
                     <field name="unitab"/>
                    	<field name="sequence"/>
-            </tree>
+            </list>
         </field>
     </record>
 
@@ -162,8 +159,8 @@
         <field name="name">Descriptions</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">plm.description</field>
-        <field name="view_mode">tree,form</field>
-        <field name="view_id" ref="plm_view_description_tree"/>
+        <field name="view_mode">list,form</field>
+        <field name="view_id" ref="plm_view_description_list"/>
     </record>
 
 

@@ -34,7 +34,7 @@ class ProductProduct(models.Model):
         return {'name': _('Products'),
                 'res_model': 'plm.breakages',
                 'view_type': 'form',
-                'view_mode': 'tree,form',
+                'view_mode': 'list,form',
                 'type': 'ir.actions.act_window',
                 'domain': [('product_id', '=', self.id)],
                 'context': {'default_product_id': self.id}}
